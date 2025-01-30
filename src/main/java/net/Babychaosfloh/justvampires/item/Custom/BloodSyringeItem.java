@@ -3,7 +3,9 @@ package net.Babychaosfloh.justvampires.item.Custom;
 import net.Babychaosfloh.justvampires.config.JustVampiresCommonConfigs;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
@@ -42,19 +44,43 @@ public class BloodSyringeItem extends Item {
 
        List<List<? extends String>> TagList = Arrays.asList(JustVampiresCommonConfigs.BLOOD_TYPE_ENTITY_TAGS.get());
 
-        for(int i = 0; i < TagList.get(0).size(); i++) {
-            String currentT = TagList.get(0).get(i).toString();
-            String[] splitCT = currentT.split(":");
+       System.out.println("One");
+       player.sendSystemMessage(Component.literal("One"));
 
-            player.sendSystemMessage(Component.literal("[Debug] " + JustVampiresCommonConfigs.BLOOD_TYPE_ENTITY_TAGS.get().get(i)));
-            player.sendSystemMessage(Component.literal("[Debug] " + TagList.get(0).get(i)));
+       if(!TagList.isEmpty() || !TagList.get(0).isEmpty()) {
 
-           TagKey<EntityType<?>> currentTag = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(splitCT[0], splitCT[1]));
+          // player.sendSystemMessage(Component.literal(""));
 
-           if(InteractionTarget.getType().is(currentTag)) {
-               bloodType.putString("JustVampires:bloodType", currentT);
-               bloodType.putString("JustVampires:mob", MobType.toString());
+           for (int i = 0; i < TagList.get(0).size(); i++) {
+               String currentT = TagList.get(0).get(i).toString();
+               String[] splitCT = currentT.split(":");
+
+               player.sendSystemMessage(Component.literal("[Debug-1] " + JustVampiresCommonConfigs.BLOOD_TYPE_ENTITY_TAGS.get().get(i)));
+               player.sendSystemMessage(Component.literal("[Debug-2] " + TagList.get(0).get(i)));
+               player.sendSystemMessage(Component.literal("[Debug-3] " + currentT));
+               player.sendSystemMessage(Component.literal("[Debug-4] " + splitCT[1]));
+
+               System.out.println("Two");
+               player.sendSystemMessage(Component.literal("Two"));
+
+               player.sendSystemMessage(Component.literal("" + splitCT.length));
+
+
+               TagKey<EntityType<?>> currentTag = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(splitCT[0], splitCT[1]));
+
+               System.out.println("Three");
+               player.sendSystemMessage(Component.literal("Three"));
+
+               if (InteractionTarget.getType().is(currentTag)) {
+                   bloodType.putString("JustVampires:bloodType", currentT);
+                   bloodType.putString("JustVampires:mob", MobType.toString());
+
+                   System.out.println("Four");
+                   player.sendSystemMessage(Component.literal("Four"));
+               }
            }
+       } else {
+           player.sendSystemMessage(Component.literal("[JustVampires] ERROR! Bloodtypes can't be null "));
        }
 
         /*
