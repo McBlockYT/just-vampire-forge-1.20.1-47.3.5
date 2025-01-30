@@ -5,7 +5,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagFile;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -44,15 +43,16 @@ public class BloodSyringeItem extends Item {
        List<List<? extends String>> TagList = Arrays.asList(JustVampiresCommonConfigs.BLOOD_TYPE_ENTITY_TAGS.get());
 
         for(int i = 0; i < TagList.get(0).size(); i++) {
-            String current = TagList.get(0).get(i).toString();
+            String currentT = TagList.get(0).get(i).toString();
+            String[] splitCT = currentT.split(":");
 
             player.sendSystemMessage(Component.literal("[Debug] " + JustVampiresCommonConfigs.BLOOD_TYPE_ENTITY_TAGS.get().get(i)));
             player.sendSystemMessage(Component.literal("[Debug] " + TagList.get(0).get(i)));
 
-           TagKey<EntityType<?>> currentTag = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("justvampires", current));
+           TagKey<EntityType<?>> currentTag = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(splitCT[0], splitCT[1]));
 
            if(InteractionTarget.getType().is(currentTag)) {
-               bloodType.putString("JustVampires:bloodType", current);
+               bloodType.putString("JustVampires:bloodType", currentT);
                bloodType.putString("JustVampires:mob", MobType.toString());
            }
        }
