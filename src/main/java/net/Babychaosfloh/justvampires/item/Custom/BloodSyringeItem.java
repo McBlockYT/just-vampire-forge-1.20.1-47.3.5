@@ -40,19 +40,14 @@ public class BloodSyringeItem extends Item {
         bloodType.putString("JustVampires:bloodType", "NONE");
         bloodType.putString("JustVampires:mob", "NONE");
 
-        TagKey<EntityType<?>> tagNormal = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("justvampires", "bloodtype_normal"));
-        TagKey<EntityType<?>> tagInsect = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("justvampires", "bloodtype_insect"));
-        TagKey<EntityType<?>> tagDefine = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("justvampires", "bloodtype_insect"));
+        List<List<? extends String>> TagList = Arrays.asList(JustVampiresCommonConfigs.BLOOD_TYPE_ENTITY_TAGS.get());
 
-       List<List<? extends String>> TagList = Arrays.asList(JustVampiresCommonConfigs.BLOOD_TYPE_ENTITY_TAGS.get());
-
-       System.out.println("One");
-       player.sendSystemMessage(Component.literal("One"));
+        System.out.println("One");
+        player.sendSystemMessage(Component.literal("One"));
 
         for (int i = 0; i < TagList.get(0).size(); i++) {
             String currentT = TagList.get(0).get(i);
             String[] splitCT = currentT.split(":");
-
             if (splitCT.length == 2) {
 
                 player.sendSystemMessage(Component.literal("[Debug-1] " + JustVampiresCommonConfigs.BLOOD_TYPE_ENTITY_TAGS.get().get(i)));
@@ -97,6 +92,7 @@ public class BloodSyringeItem extends Item {
         player.sendSystemMessage(Component.literal("YAY"));
         InteractionTarget.hurt(InteractionTarget.damageSources().playerAttack(player), 0.5F);
         player.getItemInHand(UsedHand).setTag(bloodType);
+
         return super.interactLivingEntity(stack, player, InteractionTarget, UsedHand);
     }
 }
