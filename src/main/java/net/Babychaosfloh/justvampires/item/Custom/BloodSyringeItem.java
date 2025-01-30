@@ -1,6 +1,8 @@
 package net.Babychaosfloh.justvampires.item.Custom;
 
+import net.Babychaosfloh.justvampires.JustVampires;
 import net.Babychaosfloh.justvampires.config.JustVampiresCommonConfigs;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.ClickEvent;
@@ -47,41 +49,39 @@ public class BloodSyringeItem extends Item {
        System.out.println("One");
        player.sendSystemMessage(Component.literal("One"));
 
-       if(!TagList.isEmpty() || !TagList.get(0).isEmpty()) {
+        for (int i = 0; i < TagList.get(0).size(); i++) {
+            String currentT = TagList.get(0).get(i);
+            String[] splitCT = currentT.split(":");
 
-          // player.sendSystemMessage(Component.literal(""));
+            if (splitCT.length == 2) {
 
-           for (int i = 0; i < TagList.get(0).size(); i++) {
-               String currentT = TagList.get(0).get(i).toString();
-               String[] splitCT = currentT.split(":");
+                player.sendSystemMessage(Component.literal("[Debug-1] " + JustVampiresCommonConfigs.BLOOD_TYPE_ENTITY_TAGS.get().get(i)));
+                player.sendSystemMessage(Component.literal("[Debug-2] " + TagList.get(0).get(i)));
+                player.sendSystemMessage(Component.literal("[Debug-3] " + currentT));
+                player.sendSystemMessage(Component.literal("[Debug-4] " + splitCT[1]));
 
-               player.sendSystemMessage(Component.literal("[Debug-1] " + JustVampiresCommonConfigs.BLOOD_TYPE_ENTITY_TAGS.get().get(i)));
-               player.sendSystemMessage(Component.literal("[Debug-2] " + TagList.get(0).get(i)));
-               player.sendSystemMessage(Component.literal("[Debug-3] " + currentT));
-               player.sendSystemMessage(Component.literal("[Debug-4] " + splitCT[1]));
+                System.out.println("Two");
+                player.sendSystemMessage(Component.literal("Two"));
 
-               System.out.println("Two");
-               player.sendSystemMessage(Component.literal("Two"));
-
-               player.sendSystemMessage(Component.literal("" + splitCT.length));
+                player.sendSystemMessage(Component.literal("" + splitCT.length));
 
 
-               TagKey<EntityType<?>> currentTag = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(splitCT[0], splitCT[1]));
+                TagKey<EntityType<?>> currentTag = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(splitCT[0], splitCT[1]));
 
-               System.out.println("Three");
-               player.sendSystemMessage(Component.literal("Three"));
+                System.out.println("Three");
+                player.sendSystemMessage(Component.literal("Three"));
 
-               if (InteractionTarget.getType().is(currentTag)) {
-                   bloodType.putString("JustVampires:bloodType", currentT);
-                   bloodType.putString("JustVampires:mob", MobType.toString());
+                if (InteractionTarget.getType().is(currentTag)) {
+                    bloodType.putString("JustVampires:bloodType", currentT);
+                    bloodType.putString("JustVampires:mob", MobType.toString());
 
-                   System.out.println("Four");
-                   player.sendSystemMessage(Component.literal("Four"));
-               }
-           }
-       } else {
-           player.sendSystemMessage(Component.literal("[JustVampires] ERROR! Bloodtypes can't be null "));
-       }
+                    System.out.println("Four");
+                    player.sendSystemMessage(Component.literal("Four"));
+                }
+            } else {
+                player.sendSystemMessage(Component.literal("[JustVampires] Syntax ERROR! Bloodtypes have to be: \"<namespace>:<path>\" \n Example: \"justvampires:blootype_normal\" \n(Click to open config)").setStyle(JustVampiresCommonConfigs.style));
+            }
+        }
 
         /*
         if(InteractionTarget.getType().is(tagNormal)) {
