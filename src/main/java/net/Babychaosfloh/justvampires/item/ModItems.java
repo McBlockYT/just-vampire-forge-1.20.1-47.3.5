@@ -3,6 +3,7 @@ package net.Babychaosfloh.justvampires.item;
 import net.Babychaosfloh.justvampires.JustVampires;
 import net.Babychaosfloh.justvampires.item.Custom.BloodSyringeItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -13,7 +14,10 @@ public class ModItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, JustVampires.MOD_ID);
 
     public static final RegistryObject<Item> BLOOD_SYRINGE = ITEMS.register("blood_syringe",
-            () -> new BloodSyringeItem(new Item.Properties()));
+            () -> new BloodSyringeItem(new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON)
+            ));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

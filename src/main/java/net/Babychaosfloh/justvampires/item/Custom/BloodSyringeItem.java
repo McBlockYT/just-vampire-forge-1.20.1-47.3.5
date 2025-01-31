@@ -27,8 +27,6 @@ public class BloodSyringeItem extends Item {
 
     public BloodSyringeItem(Properties pProperties) {
         super(pProperties);
-        pProperties.stacksTo(1);
-        pProperties.rarity(Rarity.UNCOMMON);
     }
 
     @Override
