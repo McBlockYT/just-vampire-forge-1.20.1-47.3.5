@@ -72,7 +72,7 @@ public class BloodSyringeItem extends Item {
                     player.sendSystemMessage(Component.literal("Four"));
                 }
             } else {
-                player.sendSystemMessage(Component.literal("[JustVampires] Syntax ERROR! Bloodtypes have to be: \"<namespace>:<path>\" \n Example: \"justvampires:blootype_normal\" \n(Click to open config)").setStyle(JustVampiresCommonConfigs.style));
+  //              player.sendSystemMessage(Component.literal("[JustVampires] Syntax ERROR! Bloodtypes have to be: \"<namespace>:<path>\" \n Example: \"justvampires:blootype_normal\" \n(Click to open config)").setStyle(JustVampiresCommonConfigs.style));
             }
         }
 
