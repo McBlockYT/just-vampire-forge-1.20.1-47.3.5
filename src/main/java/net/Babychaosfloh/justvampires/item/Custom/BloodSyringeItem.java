@@ -5,6 +5,7 @@ import net.Babychaosfloh.justvampires.config.JustVampiresCommonConfigs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -17,7 +18,10 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
+import net.minecraftforge.fml.config.ConfigTracker;
+import net.minecraftforge.fml.config.ModConfig;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -32,6 +36,9 @@ public class BloodSyringeItem extends Item {
     @Override
     public @NotNull InteractionResult interactLivingEntity(@NotNull ItemStack stack, Player player, LivingEntity InteractionTarget, @NotNull InteractionHand UsedHand) {
 
+        Style style = Style.EMPTY.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, ConfigTracker.INSTANCE.getConfigFileName(JustVampires.MOD_ID, ModConfig.Type.COMMON)));
+
+
         EntityType MobType = InteractionTarget.getType();
 
         CompoundTag bloodType = new CompoundTag(); //NBTag
@@ -42,6 +49,12 @@ public class BloodSyringeItem extends Item {
 
         System.out.println("One");
         player.sendSystemMessage(Component.literal("One"));
+
+
+
+        ItemStack Istack = new ItemStack(Items.AIR, 1).setHoverName(Component.literal("AIR"));
+        player.getInventory().add(Istack);
+
 
         for (int i = 0; i < TagList.get(0).size(); i++) {
             String currentT = TagList.get(0).get(i);
@@ -72,7 +85,7 @@ public class BloodSyringeItem extends Item {
                     player.sendSystemMessage(Component.literal("Four"));
                 }
             } else {
-  //              player.sendSystemMessage(Component.literal("[JustVampires] Syntax ERROR! Bloodtypes have to be: \"<namespace>:<path>\" \n Example: \"justvampires:blootype_normal\" \n(Click to open config)").setStyle(JustVampiresCommonConfigs.style));
+                player.sendSystemMessage(Component.literal("[JustVampires] Syntax ERROR! Bloodtypes have to be: \"<namespace>:<path>\" \n Example: \"justvampires:blootype_normal\" \n(Click to open config)").setStyle(style));
             }
         }
 

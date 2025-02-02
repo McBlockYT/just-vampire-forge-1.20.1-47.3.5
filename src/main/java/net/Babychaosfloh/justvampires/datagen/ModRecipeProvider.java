@@ -30,8 +30,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
         //oreBlasting(pWriter, SAPPHIRE_SMELTABLES, RecipeCategory.MISC, ModItems.SAPPHIRE.get(), 0.25f, 100, "sapphire");
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLOOD_SYRINGE.get())
-                .pattern("#I#")
-                .pattern("G#G")
+                .pattern(" I ")
+                .pattern("G G")
                 .pattern("TTT")
                 .define('I', Items.IRON_INGOT)
                 .define('G', Items.GLASS)

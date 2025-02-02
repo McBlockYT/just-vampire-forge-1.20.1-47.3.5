@@ -10,8 +10,6 @@ import java.util.List;
 
 public class JustVampiresCommonConfigs {
 
- //   public static final Style style = Style.EMPTY.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, Minecraft.getInstance().gameDirectory + "/config/justvampries-common.toml"));
-
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec SPEC;
 
