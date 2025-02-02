@@ -1,8 +1,8 @@
 package net.Babychaosfloh.justvampires.item.Custom;
 
 import net.Babychaosfloh.justvampires.JustVampires;
+import net.Babychaosfloh.justvampires.color.ColorHandler;
 import net.Babychaosfloh.justvampires.config.JustVampiresCommonConfigs;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.ClickEvent;
@@ -17,14 +17,14 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Rarity;
 import net.minecraftforge.fml.config.ConfigTracker;
 import net.minecraftforge.fml.config.ModConfig;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static java.lang.Integer.parseInt;
 
 public class BloodSyringeItem extends Item {
 
@@ -45,19 +45,10 @@ public class BloodSyringeItem extends Item {
 
         List<List<? extends String>> TagList = Arrays.asList(JustVampiresCommonConfigs.BLOOD_TYPE_ENTITY_TAGS.get());
 
-        System.out.println("One");
-        player.sendSystemMessage(Component.literal("One"));
-
-
-
-        ItemStack Istack = new ItemStack(Items.AIR, 1).setHoverName(Component.literal("AIR"));
-        player.getInventory().add(Istack);
-
-
-        for (int i = 0; i < TagList.get(0).size(); i++) {
+        for(int i = 0; i < TagList.get(0).size(); i++) {
             String currentT = TagList.get(0).get(i);
             String[] splitCT = currentT.split(":");
-            if (splitCT.length == 2) {
+            if (splitCT.length == 2 || splitCT.length == 3) {
 
                 player.sendSystemMessage(Component.literal("[Debug-1] " + JustVampiresCommonConfigs.BLOOD_TYPE_ENTITY_TAGS.get().get(i)));
                 player.sendSystemMessage(Component.literal("[Debug-2] " + TagList.get(0).get(i)));
@@ -76,6 +67,9 @@ public class BloodSyringeItem extends Item {
                 player.sendSystemMessage(Component.literal("Three"));
 
                 if (pInteractionTarget.getType().is(currentTag)) {
+
+                    ColorHandler.onBloodChange(pStack, Integer.parseInt(splitCT[2].substring(2), 16));
+
                     bloodType.putString("JustVampires:bloodType", currentT);
                     bloodType.putString("JustVampires:mob", MobType.toString());
 

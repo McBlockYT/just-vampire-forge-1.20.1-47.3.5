@@ -21,10 +21,10 @@ public class JustVampiresCommonConfigs {
 
         BLOOD_TYPE_ENTITY_TAGS = BUILDER.defineList(
                 "BLOOD_TYPE_ENTITY_TAGS", Arrays.asList(
-                        "justvampires:bloodtype_normal",
-                        "justvampires:bloodtype_insect",
-                        "justvampires:bloodtype_slime"
-                        //"justvampires:bloodtype_zombie",
+                        "justvampires:bloodtype_normal:0xDC143C",
+                        "justvampires:bloodtype_insect:0xF4E04D",
+                        //"justvampires:bloodtype_slime:0xFF0000"
+                        "justvampires:bloodtype_zombie:0x9c3c16"
                 ), // Standart values
                 o -> o instanceof String // validating
         );
