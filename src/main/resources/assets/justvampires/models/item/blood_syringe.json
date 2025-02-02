@@ -4,8 +4,8 @@
 		"glass": "minecraft:block/glass",
 		"iron": "minecraft:block/iron_block",
 		"gold": "justvampires:item/gold_block",
-		"blood": "justvampires:liquid/blood",
-		"particle": "justvampires:liquid/blood"
+		"blood": "justvampires:item/blood",
+		"particle": "justvampires:item/blood"
 	},
 	"elements": [
 		{

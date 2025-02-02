@@ -5,7 +5,6 @@ import net.Babychaosfloh.justvampires.config.JustVampiresCommonConfigs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -34,12 +33,11 @@ public class BloodSyringeItem extends Item {
     }
 
     @Override
-    public @NotNull InteractionResult interactLivingEntity(@NotNull ItemStack stack, Player player, LivingEntity InteractionTarget, @NotNull InteractionHand UsedHand) {
+    public @NotNull InteractionResult interactLivingEntity(@NotNull ItemStack pStack, Player player, LivingEntity pInteractionTarget, @NotNull InteractionHand pUsedHand) {
 
         Style style = Style.EMPTY.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, ConfigTracker.INSTANCE.getConfigFileName(JustVampires.MOD_ID, ModConfig.Type.COMMON)));
 
-
-        EntityType MobType = InteractionTarget.getType();
+        EntityType MobType = pInteractionTarget.getType();
 
         CompoundTag bloodType = new CompoundTag(); //NBTag
         bloodType.putString("JustVampires:bloodType", "NONE");
@@ -77,12 +75,13 @@ public class BloodSyringeItem extends Item {
                 System.out.println("Three");
                 player.sendSystemMessage(Component.literal("Three"));
 
-                if (InteractionTarget.getType().is(currentTag)) {
+                if (pInteractionTarget.getType().is(currentTag)) {
                     bloodType.putString("JustVampires:bloodType", currentT);
                     bloodType.putString("JustVampires:mob", MobType.toString());
 
                     System.out.println("Four");
                     player.sendSystemMessage(Component.literal("Four"));
+
                 }
             } else {
                 player.sendSystemMessage(Component.literal("[JustVampires] Syntax ERROR! Bloodtypes have to be: \"<namespace>:<path>\" \n Example: \"justvampires:blootype_normal\" \n(Click to open config)").setStyle(style));
@@ -101,9 +100,9 @@ public class BloodSyringeItem extends Item {
          */
 
         player.sendSystemMessage(Component.literal("YAY"));
-        InteractionTarget.hurt(InteractionTarget.damageSources().playerAttack(player), 0.5F);
-        player.getItemInHand(UsedHand).setTag(bloodType);
+        pInteractionTarget.hurt(pInteractionTarget.damageSources().playerAttack(player), 0.5F);
+        player.getItemInHand(pUsedHand).setTag(bloodType);
 
-        return super.interactLivingEntity(stack, player, InteractionTarget, UsedHand);
+        return super.interactLivingEntity(pStack, player, pInteractionTarget, pUsedHand);
     }
 }
