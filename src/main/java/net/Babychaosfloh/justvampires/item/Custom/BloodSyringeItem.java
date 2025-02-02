@@ -88,17 +88,6 @@ public class BloodSyringeItem extends Item {
             }
         }
 
-        /*
-        if(InteractionTarget.getType().is(tagNormal)) {
-           bloodType.putString("JustVampires:bloodType", "NORMAL");
-            bloodType.putString("JustVampires:mob", MobType.toString());
-        }
-        else if(InteractionTarget.getType().is(tagInsect)) {
-            bloodType.putString("JustVampires:bloodType", "INSECT");
-            bloodType.putString("JustVampires:mob", MobType.toString());
-        }
-         */
-
         player.sendSystemMessage(Component.literal("YAY"));
         pInteractionTarget.hurt(pInteractionTarget.damageSources().playerAttack(player), 0.5F);
         player.getItemInHand(pUsedHand).setTag(bloodType);
