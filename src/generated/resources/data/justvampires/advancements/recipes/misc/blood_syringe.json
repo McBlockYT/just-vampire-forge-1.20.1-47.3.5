@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blood_syringe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "justvampires:blood_syringe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "justvampires:blood_syringe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_blood_syringe",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "justvampires:blood_syringe"
+    ]
+  },
+  "sends_telemetry_event": false
+}
