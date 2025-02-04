@@ -1,4 +1,35 @@
 package net.Babychaosfloh.justvampires.effekt;
 
-public class SepsisEffect {
+import net.minecraft.WorldVersion;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+
+public class SepsisEffect extends MobEffect {
+    public SepsisEffect(MobEffectCategory mobEffectCategory, int color) {
+        super(mobEffectCategory, color);
+    }
+
+    @Override
+    public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
+        float pHealth = pLivingEntity.getHealth();
+        if (!pLivingEntity.level().isClientSide) {
+            if (pHealth > 1.0F) {
+                pLivingEntity.hurt(pLivingEntity.damageSources().magic(), 1.0F * pAmplifier);
+                pLivingEntity.sendSystemMessage(Component.literal(Minecraft.getInstance().toString()));
+            }
+        }
+        if (pAmplifier > 0) {
+            super.applyEffectTick(pLivingEntity, pAmplifier);
+        } else {
+            super.applyEffectTick(pLivingEntity, pAmplifier);
+        }
+    }
+
+    @Override
+    public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
+        return true;
+    }
 }

@@ -3,6 +3,7 @@ package net.Babychaosfloh.justvampires;
 import com.mojang.logging.LogUtils;
 import net.Babychaosfloh.justvampires.config.JustVampiresClientConfigs;
 import net.Babychaosfloh.justvampires.config.JustVampiresCommonConfigs;
+import net.Babychaosfloh.justvampires.effekt.ModEffects;
 import net.Babychaosfloh.justvampires.item.ModCreativeModTabs;
 import net.Babychaosfloh.justvampires.item.ModItems;
 import net.minecraft.client.Minecraft;
@@ -34,6 +35,8 @@ public class JustVampires {
         ModItems.register(modEventBus);
 
         ModCreativeModTabs.register(modEventBus);
+
+        ModEffects.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
