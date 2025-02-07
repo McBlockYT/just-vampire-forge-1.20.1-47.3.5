@@ -1,6 +1,7 @@
 package net.Babychaosfloh.justvampires;
 
 import com.mojang.logging.LogUtils;
+import net.Babychaosfloh.justvampires.block.ModBlocks;
 import net.Babychaosfloh.justvampires.config.JustVampiresClientConfigs;
 import net.Babychaosfloh.justvampires.config.JustVampiresCommonConfigs;
 import net.Babychaosfloh.justvampires.effekt.ModEffects;
@@ -37,6 +38,8 @@ public class JustVampires {
         ModCreativeModTabs.register(modEventBus);
 
         ModEffects.register(modEventBus);
+
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

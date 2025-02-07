@@ -1,6 +1,7 @@
 package net.Babychaosfloh.justvampires.item;
 
 import net.Babychaosfloh.justvampires.JustVampires;
+import net.Babychaosfloh.justvampires.block.ModBlocks;
 import net.Babychaosfloh.justvampires.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -24,6 +25,9 @@ public class ModCreativeModTabs {
                         pOutput.accept(Items.GOLD_INGOT);
                         pOutput.accept(Items.IRON_INGOT);
                         pOutput.accept(Items.GLASS);
+
+                        pOutput.accept(ModBlocks.SAPPHIRE_BLOCK.get());
+                        pOutput.accept(ModBlocks.RAW_SAPPHIRE_BLOCK.get());
 
 
                     })
