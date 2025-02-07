@@ -17,7 +17,7 @@ public class ColorHandler {
                 return stack.getTag().getInt("CustomColor");
             }
             return 0xFFFFFF; // Standardfarbe
-        }, ModItems.BLOOD_SYRINGE.get()); // Item statt ItemStack übergeben
+        }, ModItems.BLOOD_SYRINGE.get());
     }
 }
 
