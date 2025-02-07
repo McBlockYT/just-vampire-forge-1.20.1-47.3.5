@@ -18,12 +18,12 @@ public class SepsisEffect extends MobEffect {
         if (!pLivingEntity.level().isClientSide) {
             if (pHealth > 1.0F) {
                 pLivingEntity.hurt(pLivingEntity.damageSources().magic(), 1.0F * pAmplifier);
-                pLivingEntity.sendSystemMessage(Component.literal(Minecraft.getInstance().toString()));
             }
         }
         if (pAmplifier > 0) {
             super.applyEffectTick(pLivingEntity, pAmplifier);
         } else {
+            pAmplifier = 1;
             super.applyEffectTick(pLivingEntity, pAmplifier);
         }
     }

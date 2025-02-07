@@ -43,6 +43,8 @@ public class BloodSyringeItem extends Item {
         bloodType.putString("JustVampires:bloodType", "NONE");
         bloodType.putString("JustVampires:mob", "NONE");
 
+        CompoundTag colorTag = new CompoundTag();
+
         List<List<? extends String>> TagList = Arrays.asList(JustVampiresCommonConfigs.BLOOD_TYPE_ENTITY_TAGS.get());
 
         for(int i = 0; i < TagList.get(0).size(); i++) {
@@ -68,7 +70,7 @@ public class BloodSyringeItem extends Item {
 
                 if (pInteractionTarget.getType().is(currentTag)) {
 
-                    ColorHandler.onBloodChange(pStack, Integer.parseInt(splitCT[2].substring(2), 16));
+                    colorTag.putInt("CustomColor", Integer.parseInt(splitCT[2].substring(2), 16));
 
                     bloodType.putString("JustVampires:bloodType", currentT);
                     bloodType.putString("JustVampires:mob", MobType.toString());
@@ -85,6 +87,7 @@ public class BloodSyringeItem extends Item {
         player.sendSystemMessage(Component.literal("YAY"));
         pInteractionTarget.hurt(pInteractionTarget.damageSources().playerAttack(player), 0.5F);
         player.getItemInHand(pUsedHand).setTag(bloodType);
+        player.getItemInHand(pUsedHand).setTag(colorTag);
 
         return super.interactLivingEntity(pStack, player, pInteractionTarget, pUsedHand);
     }
