@@ -1,7 +1,6 @@
 package net.Babychaosfloh.justvampires.item.Custom;
 
 import net.Babychaosfloh.justvampires.JustVampires;
-import net.Babychaosfloh.justvampires.color.ColorHandler;
 import net.Babychaosfloh.justvampires.config.JustVampiresCommonConfigs;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -23,8 +22,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
-
-import static java.lang.Integer.parseInt;
 
 public class BloodSyringeItem extends Item {
 

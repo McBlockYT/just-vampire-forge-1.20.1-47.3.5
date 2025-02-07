@@ -1,14 +1,7 @@
 package net.Babychaosfloh.justvampires.color;
 
-import net.Babychaosfloh.justvampires.JustVampires;
-import net.Babychaosfloh.justvampires.config.JustVampiresCommonConfigs;
-import net.Babychaosfloh.justvampires.item.Custom.BloodSyringeItem;
 import net.Babychaosfloh.justvampires.item.ModItems;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.color.item.ItemColors;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
