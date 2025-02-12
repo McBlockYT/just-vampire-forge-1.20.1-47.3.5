@@ -37,8 +37,8 @@ public class BloodSyringeItem extends Item {
         EntityType MobType = pInteractionTarget.getType();
 
         CompoundTag bloodType = new CompoundTag(); //NBTag
-        bloodType.putString("JustVampires:bloodType", "NONE");
-        bloodType.putString("JustVampires:mob", "NONE");
+        bloodType.putString("JustVampires:bloodType", "AIR");
+        bloodType.putString("JustVampires:mob", "AIR");
 
         CompoundTag colorTag = new CompoundTag();
 

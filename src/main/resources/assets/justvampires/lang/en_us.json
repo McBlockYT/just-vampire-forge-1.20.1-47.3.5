@@ -2,7 +2,7 @@
   "item.justvampires.blood_syringe": "Blood Syringe",
   "justvampires.creativetab.blood": "Blood Items",
   "effect.justvampires.sepsis": "Sepsis",
-  "block.justvampires.sapphire_block": "sapphire_block",
-  "block.justvampires.raw_sapphire_block": "raw_sapphire_block"
-
+  "block.justvampires.sapphire_block": "Sapphire Block",
+  "block.justvampires.raw_sapphire_block": "Raw_sapphire Block",
+  "block.justvampires.test_block": "§l§cTest Block"
 }

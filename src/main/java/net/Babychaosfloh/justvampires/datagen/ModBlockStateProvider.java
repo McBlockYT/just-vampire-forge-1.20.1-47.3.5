@@ -5,6 +5,7 @@ import net.Babychaosfloh.justvampires.block.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -16,7 +17,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.SAPPHIRE_BLOCK);
-        blockWithItem(ModBlocks.RAW_SAPPHIRE_BLOCK);
+        blockWithItem(ModBlocks.ALTAR_BLOCK);
+        simpleBlock(ModBlocks.TESTBLOCK.get(),
+                new ModelFile.UncheckedModelFile(mcLoc("block/test_block")));
     }
 
 

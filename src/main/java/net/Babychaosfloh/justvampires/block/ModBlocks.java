@@ -2,6 +2,7 @@ package net.Babychaosfloh.justvampires.block;
 
 import net.Babychaosfloh.justvampires.JustVampires;
 import net.Babychaosfloh.justvampires.block.custom.AltarBlock;
+import net.Babychaosfloh.justvampires.block.custom.TestBlock;
 import net.Babychaosfloh.justvampires.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -24,8 +25,11 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT).sound(SoundType.AMETHYST)));
 
 
-    public static final RegistryObject<Block> RAW_SAPPHIRE_BLOCK = registerBlock("raw_sapphire_block",
+    public static final RegistryObject<Block> ALTAR_BLOCK = registerBlock("altar_block",
             () -> new AltarBlock(BlockBehaviour.Properties.copy(Blocks.DIRT).sound(SoundType.AMETHYST)));
+
+    public static final RegistryObject<Block> TESTBLOCK = registerBlock("test_block",
+            () -> new TestBlock(BlockBehaviour.Properties.copy(Blocks.DIRT).sound(SoundType.AMETHYST).noCollission()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

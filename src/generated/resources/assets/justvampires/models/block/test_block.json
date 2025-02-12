@@ -1,0 +1,6 @@
+{
+  "parent": "justvampires:block/template_altar",
+  "textures": {
+    "all": "justvampires:block/altar_block"
+  }
+}

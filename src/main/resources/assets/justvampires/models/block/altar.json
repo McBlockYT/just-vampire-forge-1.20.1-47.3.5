@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_altar",
-  "textures": {
-    "top": "minecraft:block/altar_top"
-  }
-}

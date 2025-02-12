@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "justvampires:block/template_altar",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "justvampires:block/template_altar",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "justvampires:block/template_altar"
+    },
+    "facing=west": {
+      "model": "justvampires:block/template_altar",
+      "y": 90
+    }
+  }
+}
