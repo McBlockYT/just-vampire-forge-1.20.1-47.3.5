@@ -1,10 +1,12 @@
 package net.Babychaosfloh.justvampires.block.entity;
 
+import net.Babychaosfloh.justvampires.JustVampires;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -16,22 +18,36 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class TestBlockEntity extends BlockEntity {
-    public static final ItemStackHandler itemHandler = new ItemStackHandler(2);
+    public final ItemStackHandler itemHandler = new ItemStackHandler(2) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+            if(!level.isClientSide()) {
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+                JustVampires.print("slot " + slot + " changed!");
+            }
+        }
+    };
 
-    public static final int head = 0;
-    public static final int syringe = 1;
+    public static final int HEAD_SLOT = 0;
+    public static final int SYRINGE_SLOT = 1;
 
     private LazyOptional lazyItemHandler = LazyOptional.empty();
 
-    public static SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-
-   // protected final ContainerData data;
-   // private String bloodType = "AIR";
+    public SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
 
     public TestBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.TEST_BE.get(), pPos, pBlockState);
     }
 
+
+    public ItemStack getRenderStack() {
+        if(!itemHandler.getStackInSlot(HEAD_SLOT).isEmpty()) {
+            return itemHandler.getStackInSlot(HEAD_SLOT);
+        } else {
+            return itemHandler.getStackInSlot(HEAD_SLOT);
+        }
+    }
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {

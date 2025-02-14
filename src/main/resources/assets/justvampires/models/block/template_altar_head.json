@@ -1,0 +1,114 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"ambientocclusion": false,
+	"textures": {
+		"body": "justvampires:block/altar_block",
+		"top": "justvampires:block/altar_top",
+		"particle": "justvampires:item/blood",
+		"head": "sapphire_block"
+	},
+	"elements": [
+		{
+			"name": "Altar base",
+			"from": [2, 0, 2],
+			"to": [14, 2, 14],
+			"faces": {
+				"north": {"uv": [2, 12, 14, 16], "texture": "#body"},
+				"east": {"uv": [4, 2, 0, 14], "rotation": 270, "texture": "#body"},
+				"south": {"uv": [2, 12, 14, 16], "texture": "#body"},
+				"west": {"uv": [0, 2, 4, 14], "rotation": 90, "texture": "#body"},
+				"up": {"uv": [2, 2, 14, 14], "rotation": 180, "texture": "#body"},
+				"down": {"uv": [2, 2, 14, 14], "rotation": 180, "texture": "#body", "cullface": "down"}
+			}
+		},
+		{
+			"name": "Lower narrow portion",
+			"from": [4, 2, 3],
+			"to": [12, 3, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -2, 0]},
+			"faces": {
+				"north": {"uv": [4, 11, 12, 12], "texture": "#body"},
+				"east": {"uv": [5, 3, 4, 13], "rotation": 270, "texture": "#body"},
+				"south": {"uv": [4, 11, 12, 12], "texture": "#body"},
+				"west": {"uv": [4, 3, 5, 13], "rotation": 90, "texture": "#body"},
+				"up": {"uv": [4, 3, 12, 13], "rotation": 180, "texture": "#body"}
+			}
+		},
+		{
+			"name": "Wider section beneath top portion",
+			"from": [6, 3, 4],
+			"to": [10, 10, 12],
+			"faces": {
+				"north": {"uv": [6, 6, 10, 11], "texture": "#body"},
+				"east": {"uv": [10, 4, 5, 12], "rotation": 270, "texture": "#body"},
+				"south": {"uv": [6, 6, 10, 11], "texture": "#body"},
+				"west": {"uv": [5, 4, 10, 12], "rotation": 90, "texture": "#body"}
+			}
+		},
+		{
+			"name": "Altar top",
+			"from": [3, 10, 0],
+			"to": [13, 13, 16],
+			"faces": {
+				"north": {"uv": [3, 0, 13, 6], "texture": "#body"},
+				"east": {"uv": [16, 0, 10, 16], "rotation": 270, "texture": "#body"},
+				"south": {"uv": [3, 0, 13, 6], "texture": "#body"},
+				"west": {"uv": [10, 0, 16, 16], "rotation": 90, "texture": "#body"},
+				"up": {"uv": [3, 0, 13, 16], "rotation": 180, "texture": "#top"},
+				"down": {"uv": [3, 0, 13, 16], "rotation": 180, "texture": "#body"}
+			}
+		},
+		{
+			"name": "Head",
+			"from": [4, 13, 1],
+			"to": [12, 21, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 13, 1]},
+			"color": 4,
+			"faces": {
+				"north": {"uv": [0, 0, 8, 8], "texture": "#head"},
+				"east": {"uv": [0, 0, 8, 8], "texture": "#head"},
+				"south": {"uv": [0, 0, 8, 8], "texture": "#head"},
+				"west": {"uv": [0, 0, 8, 8], "texture": "#head"},
+				"up": {"uv": [0, 0, 8, 8], "texture": "#head"},
+				"down": {"uv": [0, 0, 8, 8], "texture": "#head"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 1.9, -0.25],
+			"scale": [0.44141, 0.44141, 0.44141]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 1.9, -0.25],
+			"scale": [0.44141, 0.44141, 0.44141]
+		},
+		"firstperson_righthand": {
+			"rotation": [-13.25, 0, 22],
+			"translation": [0, 4.65, 0.25],
+			"scale": [0.73828, 0.73828, 0.73828]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-13.25, 0, 22],
+			"translation": [0, 4.65, 0.25],
+			"scale": [0.73828, 0.73828, 0.73828]
+		},
+		"ground": {
+			"rotation": [62, 10, 18]
+		},
+		"gui": {
+			"rotation": [0, 0, -45],
+			"translation": [2, 2, 0],
+			"scale": [1.44727, 1.44727, 1.44727]
+		},
+		"head": {
+			"rotation": [135, 0, 22.5],
+			"translation": [5.5, 8, -9.75]
+		},
+		"fixed": {
+			"translation": [0, 2.5, 0],
+			"scale": [1.46094, 1.46094, 1.46094]
+		}
+	}
+}

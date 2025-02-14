@@ -1,4 +1,4 @@
-package net.Babychaosfloh.justvampires.color;
+package net.Babychaosfloh.justvampires.design;
 
 import net.Babychaosfloh.justvampires.item.ModItems;
 import net.minecraft.client.Minecraft;

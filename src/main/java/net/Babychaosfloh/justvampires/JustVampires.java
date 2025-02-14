@@ -83,4 +83,8 @@ public class JustVampires {
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
     }
+
+    public static void print(String pPrint) {
+        LOGGER.info(pPrint);
+    }
 }
