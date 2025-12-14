@@ -4,9 +4,13 @@ import net.Babychaosfloh.justvampires.JustVampires;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -14,8 +18,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.ItemStackHandler;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.*;
 
 public class TestBlockEntity extends BlockEntity {
     public final ItemStackHandler itemHandler = new ItemStackHandler(2) {
@@ -40,13 +43,56 @@ public class TestBlockEntity extends BlockEntity {
         super(ModBlockEntities.TEST_BE.get(), pPos, pBlockState);
     }
 
+//    public ItemStack getHeadStack() {
+//        if(!itemHandler.getStackInSlot(0).isEmpty()) {
+//            return itemHandler.getStackInSlot(0);
+//        } else {
+//            return new ItemStack(Items.BARRIER);
+//        }
+//    }
+//
+//    public ItemStack getSyringeStack() {
+//        if(!itemHandler.getStackInSlot(1).isEmpty()) {
+//            return itemHandler.getStackInSlot(1);
+//        } else {
+//            return new ItemStack(Items.BARRIER);
+//        }
+//    }
 
     public ItemStack getRenderStack() {
-        if(!itemHandler.getStackInSlot(HEAD_SLOT).isEmpty()) {
-            return itemHandler.getStackInSlot(HEAD_SLOT);
+        if(!itemHandler.getStackInSlot(0).isEmpty()) {
+            for (int i = 0; i < itemHandler.getSlots(); i++) {
+                inventory.setItem(i, itemHandler.getStackInSlot(i));
+            }
+            return itemHandler.getStackInSlot(0);
         } else {
-            return itemHandler.getStackInSlot(HEAD_SLOT);
+            for (int i = 0; i < itemHandler.getSlots(); i++) {
+                inventory.setItem(i, itemHandler.getStackInSlot(i));
+            }
+            return itemHandler.getStackInSlot(1);
         }
+    }
+
+    public void sync() {
+        if (level instanceof ServerLevel serverLevel) {
+            serverLevel.getChunkSource().chunkMap.getPlayers(new ChunkPos(this.worldPosition), false)
+                    .forEach(player -> player.connection.send(this.getUpdatePacket()));
+        }
+    }
+
+    @Override
+    public ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag) {
+        load(tag);
     }
 
     @Override

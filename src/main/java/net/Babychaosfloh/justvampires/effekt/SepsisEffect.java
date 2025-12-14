@@ -14,14 +14,14 @@ public class SepsisEffect extends MobEffect {
         float pHealth = pLivingEntity.getHealth();
         if (!pLivingEntity.level().isClientSide) {
             if (pHealth > 1.0F) {
+                if (pAmplifier > 0) {
+                    super.applyEffectTick(pLivingEntity, pAmplifier);
+                } else {
+                    pAmplifier = 1;
+                    super.applyEffectTick(pLivingEntity, pAmplifier);
+                }
                 pLivingEntity.hurt(pLivingEntity.damageSources().magic(), 1.0F * pAmplifier);
             }
-        }
-        if (pAmplifier > 0) {
-            super.applyEffectTick(pLivingEntity, pAmplifier);
-        } else {
-            pAmplifier = 1;
-            super.applyEffectTick(pLivingEntity, pAmplifier);
         }
     }
 

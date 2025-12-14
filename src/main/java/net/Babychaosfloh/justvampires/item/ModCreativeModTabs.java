@@ -27,7 +27,7 @@ public class ModCreativeModTabs {
 
                         pOutput.accept(ModBlocks.SAPPHIRE_BLOCK.get());
                         pOutput.accept(ModBlocks.ALTAR_BLOCK.get());
-
+                        pOutput.accept(ModBlocks.TESTBLOCK.get());
 
                     })
                     .build());

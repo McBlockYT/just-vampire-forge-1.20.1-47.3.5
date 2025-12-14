@@ -6,9 +6,14 @@ import net.Babychaosfloh.justvampires.block.entity.ModBlockEntities;
 import net.Babychaosfloh.justvampires.config.JustVampiresClientConfigs;
 import net.Babychaosfloh.justvampires.config.JustVampiresCommonConfigs;
 import net.Babychaosfloh.justvampires.effekt.ModEffects;
+import net.Babychaosfloh.justvampires.entity.ModEntities;
+import net.Babychaosfloh.justvampires.entity.client.Vampire_BatRenderer;
+import net.Babychaosfloh.justvampires.entity.custom.Vampire_BatEntity;
 import net.Babychaosfloh.justvampires.item.ModCreativeModTabs;
 import net.Babychaosfloh.justvampires.item.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -21,7 +26,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.javafmlmod.*;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -34,15 +39,15 @@ public class JustVampires {
     public JustVampires() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ModItems.register(modEventBus);
-
         ModCreativeModTabs.register(modEventBus);
 
         ModEffects.register(modEventBus);
 
+        ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
         ModBlockEntities.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -81,6 +86,7 @@ public class JustVampires {
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            EntityRenderers.register(ModEntities.VAMPIRE_BAT.get(), Vampire_BatRenderer::new);
         }
     }
 
