@@ -473,7 +473,7 @@ public class Vampire_BatEntity extends FlyingMob implements Enemy {
     }
 
     class VampBatMoveControl extends MoveControl {
-        private float speed = (!isResting()) ? 0.1F : 0.0F;
+        private float speed = 0.1F;
         public VampBatMoveControl(Mob pMob) {
             super(pMob);
         }
@@ -481,7 +481,7 @@ public class Vampire_BatEntity extends FlyingMob implements Enemy {
         public void tick() {
             if (Vampire_BatEntity.this.horizontalCollision) {
                 Vampire_BatEntity.this.setYRot(Vampire_BatEntity.this.getYRot() + 180.0F);
-                this.speed = (!isResting()) ? 0.1F : 0.0F;
+                this.speed = 0.1F;
             }
 
             double d0 = Vampire_BatEntity.this.moveTargetPoint.x - Vampire_BatEntity.this.getX();
